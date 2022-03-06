@@ -1,8 +1,8 @@
 {
   "name": "sysml2",
-  "displayName": "sysml",
+  "displayName": "SysML",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -29,6 +29,16 @@
         "language": "sysml",
         "scopeName": "source.sysml",
         "path": "./syntaxes/sysml.tmLanguage.json"
+      },
+      {
+        "path": "./syntaxes/sysml.injection.tmLanguage.json",
+        "scopeName": "markdown.sysml.codeblock",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.sysml": "sysml"
+        }
       }
     ]
   }

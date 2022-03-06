@@ -12,6 +12,11 @@ Provide syntax highlight for SysML v2.
 
 Initial release
 
+### 0.0.2
+
+- add markdown fence block support.
+  > use ```sysml
+
 ## More
 
 See more at [SysML-V2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation).
