@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "SysML",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#quoted-variables"
+    },
+    {
+      "include": "#strings"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(about|abstract|accept|action|actor|after|alias|all|allocate|allocation|analysis|and|as|assert|assign|assume|at|attribute|bind|binding|by|calc|case|comment|concern|connect|connection|constraint|decide|def|default|defined|dependency|derived|do|doc|else|end|entry|enum|event|exhibit|exit|expose|false|feature|filter|first|flow|for|fork|frame|from|hastype|if|implies|import|in|include|individual|inout|interface|istype|item|join|language|loop|merge|message|metadata|nonunique|not|null|objective|occurrence|of|or|ordered|out|package|parallel|part|perform|port|private|protected|public|readonly|redefines|ref|render|rendering|rep|require|requirement|return|satisfy|send|snapshot|specializes|stakeholder|state|subject|subsets|succession|then|timeslice|to|transition|true|until|use|variant|variation|verification|verify|via|view|viewpoint|when|while|xor)\\b",
+          "name": "keyword.other.sysml"
+        },
+        {
+          "match": "(%|&|&&|\\?|\\?\\?|\\^|\\^\\^|\\||\\|\\|)",
+          "name": "keyword.operator.logical.sysml"
+        },
+        {
+          "match": "(!|!=|\\<|\\<=|=|==|\\>|\\>=)",
+          "name": "keyword.operator.comparison.sysml"
+        },
+        {
+          "match": "(\\*|\\*\\*|\\+|\\-|/)",
+          "name": "keyword.operator.arithmetic.sysml"
+        },
+        {
+          "match": "(\\-\\>|\\.\\.|:|::|:=|:\\>|:\\>\\>|=\\>|@|~)",
+          "name": "keyword.operator.other.sysml"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.sysml",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.sysml",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "quoted-variables": {
+      "patterns": [
+        {
+          "match": "('[^\\f\\n\\r\\t\\v\\\"\\\\]+?')",
+          "name": "variable.name.quoted.sysml"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.sysml"
+            }
+          },
+          "match": "/\\*\\*/",
+          "name": "comment.block.empty.sysml"
+        },
+        {
+          "include": "#comments-inline"
+        }
+      ]
+    },
+    "comments-inline": {
+      "patterns": [
+        {
+          "begin": "/\\*",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.sysml"
+            }
+          },
+          "end": "\\*/",
+          "name": "comment.block.sysml"
+        },
+        {
+          "begin": "(^[ \\t]+)?(?=//)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.sysml"
+            }
+          },
+          "end": "(?!\\G)",
+          "patterns": [
+            {
+              "begin": "//",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.comment.sysml"
+                }
+              },
+              "end": "\\n",
+              "name": "comment.line.double-slash.sysml"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "source.sysml"
+}
